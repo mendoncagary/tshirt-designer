@@ -27,7 +27,7 @@ angular.module('myApp.view1', ['ngRoute'])
 
 
 
-    $scope.api = "https://freshprints-api.herokuapp.com/"
+    $scope.api = "https://freshprints-api.herokuapp.com"
 
     let canvas = new fabric.Canvas('canvas');
     let random = Math.floor((Math.random() * 100) + 1);
