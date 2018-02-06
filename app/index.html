@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Freshprints</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="bower_components/fabric.js/dist/fabric.js"></script>
+  <style type="text/css">
+       .color-preview {
+         border: 1px solid #CCC;
+         margin: 2px;
+         zoom: 1;
+         vertical-align: top;
+         display: inline-block;
+         cursor: pointer;
+         overflow: hidden;
+         width: 20px;
+         height: 20px;
+       }
+       .rotate {  
+       -webkit-transform:rotate(90deg);
+       -moz-transform:rotate(90deg);
+       -o-transform:rotate(90deg);
+       /* filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5); */
+       -ms-transform:rotate(90deg);		   
+   }		
+   .Arial{font-family:"Arial";}
+   .Helvetica{font-family:"Helvetica";}
+   .MyriadPro{font-family:"Myriad Pro";}
+   .Delicious{font-family:"Delicious";}
+   .Verdana{font-family:"Verdana";}
+   .Georgia{font-family:"Georgia";}
+   .Courier{font-family:"Courier";}
+   .ComicSansMS{font-family:"Comic Sans MS";}
+   .Impact{font-family:"Impact";}
+   .Monaco{font-family:"Monaco";}
+   .Optima{font-family:"Optima";}
+   .HoeflerText{font-family:"Hoefler Text";}
+   .Plaster{font-family:"Plaster";}
+   .Engagement{font-family:"Engagement";}
+  </style>
+</head>
+<body>
+  
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">FreshPrints</a>
+          </div>
+          <!-- <ul class="nav navbar-nav">
+            <li class="active"><a href="#!/view1">Home</a></li>
+            <li><a href="#!/view2">view2</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#newDesign">New Design</a></li>
+          </ul> -->
+        </div>
+      </nav>
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div ng-view></div>
+
+  
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="controls">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Insert graphics</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <input type="file" class="form-control" id="imgLoader" placeholder="Upload Image">
+
+                            </div>
+                            <br>
+                            <div class="row">
+                                <button type="button" class="btn btn-default" ng-click="insertText()">Insert Text</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Undo/Redo</div>
+                        <div class="panel-body">
+                            <button class="btn btn-default" ng-click="undo()">Undo</button>
+                            <button class="btn btn-default" ng-click="redo()">Redo</button>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Save your Designs</div>
+                        <div class="panel-body">
+
+                            <button class="btn btn-default" ng-click="saveCanvas()">Save</button>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel-group">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-target="#collapse1">New Design</a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="usr">Name:</label>
+                                        <input type="text" class="form-control" id="usr" ng-model="designName">
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <button type="button" class="btn btn-warning" ng-click="createDesign()">Create</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">My Designs</div>
+                        <div class="panel-body">
+                            <div ng-repeat="design in savedDesigns">
+                                <a id="{{design.id}}" href="" ng-click="loadCanvas($event)">{{design.name}}</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6">
+            <h1>{{currentName}}</h1>
+            <div id="shirtDiv" class="page" style="width: 530px; height: 630px; position: relative;">
+                <img id="tshirt" src="assets/images/crew_front.png" style="width:530px;height:630px"></img>
+                <div id="editor" style="position: absolute;top: 100px;left: 160px;z-index: 10;width: 200px;height: 400px;">
+                    <canvas id="canvas" width=200 height="400" class="hover" style="-webkit-user-select: none;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+
+            <div class="well">
+                <ul class="nav">
+                    <li class="color-preview" title="White" style="background-color:#ffffff;"></li>
+                    <li class="color-preview" title="Dark Heather" style="background-color:#616161;"></li>
+                    <li class="color-preview" title="Gray" style="background-color:#f0f0f0;"></li>
+                    <li class="color-preview" title="Charcoal" style="background-color:#5b5b5b;"></li>
+                    <li class="color-preview" title="Black" style="background-color:#222222;"></li>
+                    <li class="color-preview" title="Heather Orange" style="background-color:#fc8d74;"></li>
+                    <li class="color-preview" title="Heather Dark Chocolate" style="background-color:#432d26;"></li>
+                    <li class="color-preview" title="Salmon" style="background-color:#eead91;"></li>
+                    <li class="color-preview" title="Chesnut" style="background-color:#806355;"></li>
+                    <li class="color-preview" title="Dark Chocolate" style="background-color:#382d21;"></li>
+                    <li class="color-preview" title="Citrus Yellow" style="background-color:#faef93;"></li>
+                    <li class="color-preview" title="Avocado" style="background-color:#aeba5e;"></li>
+                    <li class="color-preview" title="Kiwi" style="background-color:#8aa140;"></li>
+                    <li class="color-preview" title="Irish Green" style="background-color:#1f6522;"></li>
+                    <li class="color-preview" title="Scrub Green" style="background-color:#13afa2;"></li>
+                    <li class="color-preview" title="Teal Ice" style="background-color:#b8d5d7;"></li>
+                    <li class="color-preview" title="Heather Sapphire" style="background-color:#15aeda;"></li>
+                    <li class="color-preview" title="Sky" style="background-color:#a5def8;"></li>
+                    <li class="color-preview" title="Antique Sapphire" style="background-color:#0f77c0;"></li>
+                    <li class="color-preview" title="Heather Navy" style="background-color:#3469b7;"></li>
+                    <li class="color-preview" title="Cherry Red" style="background-color:#c50404;"></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="span6">
+        <div>
+            <div align="center" style="min-height: 32px;">
+                <div class="clearfix">
+                    <div class="btn-group inline pull-left" id="texteditor" style="display:none;">
+                        <button id="font-family" class="btn-dropdown-toggle" data-toggle="dropdown" title="Font Style">
+                            <i class="icon-font" style="width:19px;height:19px;"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="font-family-X"></ul>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial">Arial</a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Helvetica');" class="Helvetica">Helvetica</a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Myriad Pro');" class="MyriadPro">Myriad Pro</a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Delicious');" class="Delicious">Delicious</a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Verdana');" class="Verdana">Verdana</a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial"></a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial"></a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial"></a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial"></a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial"></a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial"></a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" onclick="setFont('Arial');" class="Arial"></a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
