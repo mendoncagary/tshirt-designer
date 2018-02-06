@@ -27,7 +27,7 @@ angular.module('myApp.view1', ['ngRoute'])
 
 
 
-    $scope.api = "http://localhost:3000"
+    $scope.api = "https://freshprints-api.herokuapp.com/"
 
     let canvas = new fabric.Canvas('canvas');
     let random = Math.floor((Math.random() * 100) + 1);
@@ -127,7 +127,7 @@ angular.module('myApp.view1', ['ngRoute'])
 
     $scope.loadCanvas = function ($event) {
       let id = $event.target.id;
-      $http.get("http://localhost:3000/fetch/" + id).
+      $http.get($scope.api+"/fetch/" + id).
         then(function (response) {
           $scope.currentDesign = response.data[0].design;
           canvas.loadFromJSON($scope.currentDesign);
